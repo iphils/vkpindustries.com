@@ -54,6 +54,13 @@ Open each link, click **Download**, then run the helper script:
 
 Bottles, founders, Instagram tiles and the share image should be **real photos**.
 
+### Product images (done)
+
+`bottle-60/100/250/500.jpg` and `og-image.jpg` are real phone photos of the bottles,
+cut out and placed on a cream coconut studio scene. The 60 ml card reuses the 100 ml
+photo (same bottle type), shown slightly smaller. Raw photos and the scripts that
+made these (`cutout.py`, `compose.py`) are in `../kairali-image-originals/`.
+
 ## Text to fill in
 
 Search `index.html` for `todo` (yellow highlighted text) and `PLACEHOLDER`:
