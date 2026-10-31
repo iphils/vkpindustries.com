@@ -248,8 +248,6 @@ p { margin: 0 0 1em; }
 .benefit li { font-size: .92rem; color: #c9dbd1; margin-bottom: .8rem; padding-left: 1.1rem; position: relative; }
 .benefit li::before { content: "•"; color: var(--gold); position: absolute; left: 0; font-weight: 700; }
 .benefit li strong { color: #fff; font-weight: 500; }
-.benefits__video { text-align: center; margin: 3rem 0 0; color: #c9dbd1; }
-.benefits__video a { color: var(--beige); font-weight: 700; }
 
 /* ---------- Heritage (Malayalam) ---------- */
 .ml { font-family: var(--font-ml); font-weight: 700; line-height: 1.35; }
