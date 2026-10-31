@@ -28,7 +28,7 @@ document.querySelectorAll('.ph[data-src]').forEach(ph => {
 });
 
 // Reveal-on-scroll
-const revealEls = document.querySelectorAll('.section__head, .product, .step, .benefit, .ritual, .review, .order-steps li, .split__text, .split__media');
+const revealEls = document.querySelectorAll('.section__head, .product, .step, .benefit, .ritual, .order-steps li, .split__text, .split__media');
 revealEls.forEach(el => el.classList.add('reveal'));
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {

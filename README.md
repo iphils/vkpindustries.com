@@ -57,7 +57,7 @@ Bottles, founders, Instagram tiles and the share image should be **real photos**
 ## Text to fill in
 
 Search `index.html` for `todo` (yellow highlighted text) and `PLACEHOLDER`:
-founder name(s) and story, founder quote, real customer reviews, full address,
+founder name(s) and story, founder quote, full address,
 email, wholesale policy.
 
 ## Build Your Order (order & delivery calculator)
