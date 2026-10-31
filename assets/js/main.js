@@ -37,5 +37,12 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
 
+// Analytics: WhatsApp chat links (order-builder sends its own event)
+document.querySelectorAll('a[href*="wa.me"]').forEach(a => a.addEventListener('click', () => {
+  if (typeof window.track !== 'function') return;
+  const where = a.closest('section[id], header, footer, .wa-float');
+  window.track('whatsapp_click', { location: where ? (where.id || where.className.split(' ')[0] || where.tagName.toLowerCase()) : 'page' });
+}));
+
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();

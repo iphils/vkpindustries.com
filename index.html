@@ -21,6 +21,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZWK9EPHVR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FZWK9EPHVR');
+    // used by main.js / order.js to record key actions
+    function track(name, params) { gtag('event', name, params || {}); }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -578,7 +589,7 @@
       </div>
     </div>
     <div class="container footer__bottom">
-      <span>© <span id="year"></span> VKP Industries · Kairali Coconut Milk Oil. All rights reserved.</span>
+      <span>© <span id="year"></span> VKP Industries · Kairali Coconut Milk Oil. All rights reserved. · <a href="privacy.html">Privacy</a></span>
       <span>Proudly women-owned &amp; women-run 💚</span>
     </div>
   </footer>

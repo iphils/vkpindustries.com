@@ -311,6 +311,7 @@ p { margin: 0 0 1em; }
 .social { display: flex; gap: .7rem; }
 .social a { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; margin: 0; }
 .social a:hover { background: var(--teal); color: #fff; }
+.footer__bottom a { display: inline; margin: 0; text-decoration: underline; }
 .footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,.1); padding: 1.4rem 0; font-size: .85rem; }
 
 /* ---------- Build Your Order ---------- */

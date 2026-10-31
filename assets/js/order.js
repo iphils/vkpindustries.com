@@ -50,6 +50,7 @@
 
   // ── State ─────────────────────────────────────────────────────────────────
   const $ = id => document.getElementById(id);
+  const track = (name, params) => { if (typeof window.track === 'function') window.track(name, params); };
   const rupees = n => '₹' + n.toLocaleString('en-IN');
 
   let state = { qty: {}, pin: '', place: null };   // place = { pin, name, km, zoneIdx }
@@ -139,6 +140,7 @@
     if (!btn) return;
     const id = btn.closest('.ob-item').dataset.id;
     setQty(id, qtyOf(id) + Number(btn.dataset.step));
+    if (btn.dataset.step === '1') track('add_to_order', { size: `${id} g`, source: 'order_builder' });
   });
 
   // "Add to order" buttons on product cards
@@ -146,6 +148,7 @@
     const id = btn.dataset.add;
     setQty(id, qtyOf(id) + 1);
     toast(`Added ${id} g bottle to your order`);
+    track('add_to_order', { size: `${id} g`, source: 'product_card' });
   }));
 
   // ── Pincode → distance → zone ────────────────────────────────────────────
@@ -197,6 +200,7 @@
         zoneIdx: ZONES.findIndex(z => km <= z.max),
       };
       save(); render();
+      track('check_delivery', { state: stateName || 'unknown', zone: ZONES[state.place.zoneIdx].label });
     } catch (e) {
       err.textContent = e.message || 'Could not check this pincode right now. Please try again.';
     } finally {
@@ -211,7 +215,10 @@
   if (state.pin) $('obPin').value = state.pin;
 
   // ── Copy UPI ID ───────────────────────────────────────────────────────────
+  $('obUpiApp').addEventListener('click', () => track('open_upi_app'));
+
   $('obCopyUpi').addEventListener('click', async () => {
+    track('copy_upi');
     try { await navigator.clipboard.writeText(UPI_ID); toast('UPI ID copied'); }
     catch (_) { toast(UPI_ID); }
   });
@@ -261,6 +268,7 @@ Address: ${addr}
 
 I have made the payment. Payment screenshot attached.`;
 
+    track('whatsapp_order_sent', { value: sub + ship, currency: 'INR', bottles: totalQty(), state: state.place.name });
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
   });
 
