@@ -29,7 +29,8 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; overflow-x: hidden; }
+@supports (overflow: clip) { html { overflow-x: clip; } }
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -433,6 +434,26 @@ p { margin: 0 0 1em; }
 .toast.is-visible { transform: translate(-50%, 0); opacity: 1; }
 .toast a { color: var(--beige); font-weight: 700; text-decoration: none; white-space: nowrap; }
 
+/* Mobile cart bar: replaces the toast on small screens */
+.cartbar {
+  position: fixed; left: .75rem; right: .75rem; bottom: .75rem; z-index: 85;
+  display: none; align-items: center; justify-content: space-between; gap: 1rem;
+  background: var(--green-deep); color: #fff; text-decoration: none;
+  padding: .85rem 1.1rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  transform: translateY(160%); transition: transform .3s ease;
+}
+.cartbar__info { font-size: .95rem; }
+.cartbar__info strong { font-weight: 700; }
+.cartbar__cta { background: var(--gold); color: #fff; font-weight: 700; font-size: .92rem; padding: .55rem 1rem; border-radius: 999px; white-space: nowrap; }
+.cartbar.is-pulse { animation: cartpulse .5s ease; }
+@keyframes cartpulse { 50% { transform: scale(1.03); } }
+@media (max-width: 900px) {
+  .cartbar { display: flex; }
+  .cartbar.is-visible { transform: none; }
+  .toast { display: none; }
+  body.has-cartbar .wa-float { bottom: 5.6rem; }
+}
+
 @media (max-width: 1080px) {
   .ob { grid-template-columns: 1fr; }
   .ob { gap: 1.4rem; }
@@ -484,10 +505,11 @@ p { margin: 0 0 1em; }
     flex-direction: column; gap: 0;
     background: var(--cream-2); padding: 6rem 2rem 2rem;
     box-shadow: -10px 0 30px rgba(0,0,0,.1);
-    transform: translateX(100%); transition: transform .3s, visibility .3s; visibility: hidden;
+    /* hidden by clipping (not by moving it off-screen, which made the page wider than the phone) */
+    clip-path: inset(0 0 0 100%); transition: clip-path .3s ease, visibility .3s; visibility: hidden;
   }
   .nav a { padding: .9rem 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
-  .nav.is-open { transform: none; visibility: visible; }
+  .nav.is-open { clip-path: inset(0 0 0 -40px); visibility: visible; }   /* -40px keeps the shadow */
   .nav-toggle { display: block; margin-left: auto; z-index: 70; }
   .header__cta { display: none; }
   .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

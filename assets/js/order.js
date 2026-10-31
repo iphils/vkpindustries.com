@@ -129,7 +129,25 @@
     // header badge
     const badge = $('cartCount');
     if (badge) { badge.textContent = totalQty(); badge.hidden = totalQty() === 0; }
+
+    // mobile cart bar
+    const n = totalQty();
+    $('cartBarCount').textContent = `${n} bottle${n === 1 ? '' : 's'}`;
+    $('cartBarTotal').textContent = rupees(subtotal());
+    updateCartBar();
   }
+
+  // Show the mobile cart bar while there is something in the order,
+  // except when the order section itself is already on screen.
+  function updateCartBar() {
+    const r = $('order').getBoundingClientRect();
+    const orderInView = r.top < innerHeight * 0.75 && r.bottom > 0;
+    const show = totalQty() > 0 && !orderInView;
+    $('cartBar').classList.toggle('is-visible', show);
+    document.body.classList.toggle('has-cartbar', show);
+  }
+  addEventListener('scroll', updateCartBar, { passive: true });
+  addEventListener('resize', updateCartBar);
 
   function setQty(id, q) {
     state.qty[id] = Math.max(0, Math.min(MAX_QTY, q));
@@ -149,6 +167,8 @@
     const id = btn.dataset.add;
     setQty(id, qtyOf(id) + 1);
     toast(`Added ${id} ml bottle to your order`);
+    const bar = $('cartBar');
+    bar.classList.remove('is-pulse'); void bar.offsetWidth; bar.classList.add('is-pulse');
     track('add_to_order', { size: `${id} ml`, source: 'product_card' });
   }));
 
@@ -286,7 +306,7 @@ I have made the payment. Payment screenshot attached.`;
     toastEl.firstChild.textContent = text;
     toastEl.classList.add('is-visible');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 3000);
+    toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 5000);
   }
 
   render();
