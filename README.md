@@ -26,7 +26,7 @@ matching filename and it shows up automatically.
 | File | What | Size (px) |
 |---|---|---|
 | `hero.jpg` | Bottle with fresh coconuts / coconut milk | 1200 × 1400 |
-| `bottle-60.jpg` `bottle-100.jpg` `bottle-250.jpg` `bottle-500.jpg` | Each bottle on a plain cream background | 800 × 1000 |
+| `bottle-60.jpg` `bottle-100.jpg` `bottle-250.jpg` `bottle-500.jpg` | Each bottle (60 / 100 / 250 / 500 ml) on a plain cream background | 800 × 1000 |
 | `founders.jpg` | The women behind Kairali | 1000 × 1200 |
 | `step-1.jpg` … `step-4.jpg` | Coconuts → coconut milk → slow cooking → bottling | 600 × 600 |
 | `heritage.jpg` | Kerala heritage (Kathakali motif, uruli, grandmother oiling hair…) | 1000 × 1200 |

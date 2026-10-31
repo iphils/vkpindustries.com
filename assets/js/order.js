@@ -4,6 +4,7 @@
 (() => {
   // ── Config ────────────────────────────────────────────────────────────────
   const PRODUCTS = [
+    // id = bottle size in ml; weight = shipping weight per bottle in grams
     { id: '60',  weight: 60,  price: 110, name: 'Small bottle' },
     { id: '100', weight: 100, price: 200, name: 'Standard bottle' },
     { id: '250', weight: 250, price: 436, name: 'Family bottle' },
@@ -76,13 +77,13 @@
   itemsEl.innerHTML = PRODUCTS.map(p => `
     <div class="ob-item" data-id="${p.id}">
       <div class="ob-item__info">
-        <strong>${p.weight} g</strong>
+        <strong>${p.id} ml</strong>
         <span>${p.name} · ${rupees(p.price)}</span>
       </div>
       <div class="ob-qty">
-        <button type="button" data-step="-1" aria-label="Remove one ${p.weight} g bottle">−</button>
+        <button type="button" data-step="-1" aria-label="Remove one ${p.id} ml bottle">−</button>
         <output aria-live="polite">0</output>
-        <button type="button" data-step="1" aria-label="Add one ${p.weight} g bottle">+</button>
+        <button type="button" data-step="1" aria-label="Add one ${p.id} ml bottle">+</button>
       </div>
     </div>`).join('');
 
@@ -96,7 +97,7 @@
 
     // summary lines
     const lines = PRODUCTS.filter(p => qtyOf(p.id) > 0)
-      .map(p => `<li><span>${p.weight} g × ${qtyOf(p.id)}</span><span>${rupees(qtyOf(p.id) * p.price)}</span></li>`);
+      .map(p => `<li><span>${p.id} ml × ${qtyOf(p.id)}</span><span>${rupees(qtyOf(p.id) * p.price)}</span></li>`);
     $('obLines').innerHTML = lines.length ? lines.join('') : '<li class="ob-empty">No bottles added yet.</li>';
 
     const sub = subtotal(), ship = shipping();
@@ -140,15 +141,15 @@
     if (!btn) return;
     const id = btn.closest('.ob-item').dataset.id;
     setQty(id, qtyOf(id) + Number(btn.dataset.step));
-    if (btn.dataset.step === '1') track('add_to_order', { size: `${id} g`, source: 'order_builder' });
+    if (btn.dataset.step === '1') track('add_to_order', { size: `${id} ml`, source: 'order_builder' });
   });
 
   // "Add to order" buttons on product cards
   document.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', () => {
     const id = btn.dataset.add;
     setQty(id, qtyOf(id) + 1);
-    toast(`Added ${id} g bottle to your order`);
-    track('add_to_order', { size: `${id} g`, source: 'product_card' });
+    toast(`Added ${id} ml bottle to your order`);
+    track('add_to_order', { size: `${id} ml`, source: 'product_card' });
   }));
 
   // ── Pincode → distance → zone ────────────────────────────────────────────
@@ -247,7 +248,7 @@
     if (addr.length < 10) return fail('Please enter the full delivery address with pincode.', addrEl);
 
     const items = PRODUCTS.filter(p => qtyOf(p.id) > 0)
-      .map(p => `• ${p.weight} g × ${qtyOf(p.id)} = ₹${qtyOf(p.id) * p.price}`).join('\n');
+      .map(p => `• ${p.id} ml × ${qtyOf(p.id)} = ₹${qtyOf(p.id) * p.price}`).join('\n');
     const sub = subtotal(), ship = shipping();
 
     const msg =
