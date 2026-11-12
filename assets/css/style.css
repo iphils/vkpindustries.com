@@ -500,6 +500,9 @@ p { margin: 0 0 1em; }
 }
 
 @media (max-width: 900px) {
+  /* backdrop-filter would make the header the containing block for the fixed .nav,
+     shrinking the menu to header height and clipping all links */
+  .header { backdrop-filter: none; background: var(--cream-2); }
   .nav {
     position: fixed; inset: 0 0 0 auto; width: min(320px, 85vw);
     flex-direction: column; gap: 0;
