@@ -72,33 +72,60 @@
     return TARIFF[band][state.place.zoneIdx];
   };
 
-  // ── Render ────────────────────────────────────────────────────────────────
-  const itemsEl = $('obItems');
-  itemsEl.innerHTML = PRODUCTS.map(p => `
-    <div class="ob-item" data-id="${p.id}">
-      <div class="ob-item__info">
-        <strong>${p.id} ml</strong>
-        <span>${p.name} · ${rupees(p.price)}</span>
-      </div>
-      <div class="ob-qty">
-        <button type="button" data-step="-1" aria-label="Remove one ${p.id} ml bottle">−</button>
-        <output aria-live="polite">0</output>
-        <button type="button" data-step="1" aria-label="Add one ${p.id} ml bottle">+</button>
-      </div>
-    </div>`).join('');
+  // The cart lives in the browser, so the badge and "View order" bar work on every page.
+  // The checkout (pincode, UPI, WhatsApp) only exists on the home page.
+  const hasCheckout = !!$('order');
 
-  function render() {
-    // quantity steppers
-    itemsEl.querySelectorAll('.ob-item').forEach(row => {
-      const q = qtyOf(row.dataset.id);
-      row.querySelector('output').textContent = q;
-      row.classList.toggle('has-qty', q > 0);
+  // ── Product cards: "Add to order" turns into a − qty + stepper ────────────
+  const addBtns = [...document.querySelectorAll('[data-add]')];
+  addBtns.forEach(btn => {
+    const id = btn.dataset.add;
+    const stepper = document.createElement('div');
+    stepper.className = 'ob-qty product__qty';
+    stepper.hidden = true;
+    stepper.innerHTML = `
+      <button type="button" data-step="-1" aria-label="Remove one ${id} ml bottle">−</button>
+      <output aria-live="polite">0</output>
+      <button type="button" data-step="1" aria-label="Add one ${id} ml bottle">+</button>`;
+    btn.after(stepper);
+    stepper.addEventListener('click', e => {
+      const b = e.target.closest('button[data-step]');
+      if (!b) return;
+      setQty(id, qtyOf(id) + Number(b.dataset.step));
+      if (b.dataset.step === '1') track('add_to_order', { size: `${id} ml`, source: 'product_card' });
     });
+  });
+
+  // ── Render ────────────────────────────────────────────────────────────────
+  function render() {
+    // product card buttons / steppers
+    addBtns.forEach(btn => {
+      const q = qtyOf(btn.dataset.add);
+      const stepper = btn.nextElementSibling;
+      btn.hidden = q > 0;
+      stepper.hidden = q === 0;
+      stepper.querySelector('output').textContent = `${q} in order`;
+      btn.closest('.product')?.classList.toggle('has-qty', q > 0);
+    });
+
+    // header badge + "Order Now" goes to the bottles while the cart is empty
+    const n = totalQty();
+    const badge = $('cartCount');
+    if (badge) { badge.textContent = n; badge.hidden = n === 0; }
+    const cta = $('headerCta');
+    if (cta) cta.href = n ? './#order' : './#shop';
+
+    // mobile cart bar
+    $('cartBarCount').textContent = `${n} bottle${n === 1 ? '' : 's'}`;
+    $('cartBarTotal').textContent = rupees(subtotal());
+    updateCartBar();
+
+    if (!hasCheckout) return;
 
     // summary lines
     const lines = PRODUCTS.filter(p => qtyOf(p.id) > 0)
       .map(p => `<li><span>${p.id} ml × ${qtyOf(p.id)}</span><span>${rupees(qtyOf(p.id) * p.price)}</span></li>`);
-    $('obLines').innerHTML = lines.length ? lines.join('') : '<li class="ob-empty">No bottles added yet.</li>';
+    $('obLines').innerHTML = lines.length ? lines.join('') : '<li class="ob-empty">No bottles added yet. <a href="#shop">Choose above ↑</a></li>';
 
     const sub = subtotal(), ship = shipping();
     $('obSubtotal').textContent = rupees(sub);
@@ -126,22 +153,13 @@
       upiBtn.hidden = true;
     }
 
-    // header badge
-    const badge = $('cartCount');
-    if (badge) { badge.textContent = totalQty(); badge.hidden = totalQty() === 0; }
-
-    // mobile cart bar
-    const n = totalQty();
-    $('cartBarCount').textContent = `${n} bottle${n === 1 ? '' : 's'}`;
-    $('cartBarTotal').textContent = rupees(subtotal());
-    updateCartBar();
   }
 
   // Show the mobile cart bar while there is something in the order,
-  // except when the order section itself is already on screen.
+  // except when the checkout itself is already on screen.
   function updateCartBar() {
-    const r = $('order').getBoundingClientRect();
-    const orderInView = r.top < innerHeight * 0.75 && r.bottom > 0;
+    const r = hasCheckout && $('order').getBoundingClientRect();
+    const orderInView = !!r && r.top < innerHeight * 0.75 && r.bottom > 0;
     const show = totalQty() > 0 && !orderInView;
     $('cartBar').classList.toggle('is-visible', show);
     document.body.classList.toggle('has-cartbar', show);
@@ -154,23 +172,18 @@
     save(); render();
   }
 
-  itemsEl.addEventListener('click', e => {
-    const btn = e.target.closest('button[data-step]');
-    if (!btn) return;
-    const id = btn.closest('.ob-item').dataset.id;
-    setQty(id, qtyOf(id) + Number(btn.dataset.step));
-    if (btn.dataset.step === '1') track('add_to_order', { size: `${id} ml`, source: 'order_builder' });
-  });
-
   // "Add to order" buttons on product cards
-  document.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', () => {
+  addBtns.forEach(btn => btn.addEventListener('click', () => {
     const id = btn.dataset.add;
     setQty(id, qtyOf(id) + 1);
     toast(`Added ${id} ml bottle to your order`);
     const bar = $('cartBar');
     bar.classList.remove('is-pulse'); void bar.offsetWidth; bar.classList.add('is-pulse');
+    btn.nextElementSibling.querySelector('button[data-step="1"]').focus();   // keep keyboard focus on the card
     track('add_to_order', { size: `${id} ml`, source: 'product_card' });
   }));
+
+  if (!hasCheckout) { render(); return; }
 
   // ── Pincode → distance → zone ────────────────────────────────────────────
   function haversine(a, b) {
@@ -257,8 +270,8 @@
       if (step) $(step).scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
-    if (!totalQty()) return fail('Please add at least one bottle in Step 1.', null, 'ob-step-1');
-    if (shipping() === null) return fail('Please check delivery for your pincode in Step 2.', $('obPin'), 'ob-step-2');
+    if (!totalQty()) return fail('Please add at least one bottle from the list above.', null, 'shop');
+    if (shipping() === null) return fail('Please check delivery for your pincode in Step 1.', $('obPin'), 'ob-step-2');
 
     const name = nameEl.value.trim();
     const phone = phoneEl.value.replace(/\D/g, '').replace(/^(91|0)(?=\d{10}$)/, '');

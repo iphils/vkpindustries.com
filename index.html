@@ -43,7 +43,8 @@
     "name": "VKP Industries – Kairali Coconut Milk Oil",
     "foundingDate": "1990",
     "founder": { "@type": "Person", "name": "Subi Prince" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Tripunithura", "postalCode": "682301", "addressRegion": "Kerala", "addressCountry": "IN" },
+    "address": { "@type": "PostalAddress", "streetAddress": "Opposite St Marys Royal Metropolitan Church, Main Road", "addressLocality": "Tripunithura", "postalCode": "682301", "addressRegion": "Kerala", "addressCountry": "IN" },
+    "location": { "@type": "Place", "geo": { "@type": "GeoCoordinates", "latitude": 9.945680587882705, "longitude": 76.34852240763396 } },
     "telephone": "+91-8281447237",
     "sameAs": ["https://www.facebook.com/kairalico/", "https://www.instagram.com/kairali_oil/"]
   }
@@ -64,23 +65,20 @@
   <!-- ============ HEADER ============ -->
   <header class="header" id="top">
     <div class="container header__inner">
-      <a href="#top" class="logo" aria-label="Kairali home">
-        <!-- PLACEHOLDER: replace this text logo with <img src="assets/img/logo.svg" alt="Kairali"> when available -->
+      <a href="./" class="logo" aria-label="Kairali home">
         <span class="logo__mark">Kairali</span>
         <span class="logo__sub">Coconut Milk Oil</span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Main">
-        <a href="#shop">Shop</a>
-        <a href="#story">Our Story</a>
-        <a href="#process">How It's Made</a>
-        <a href="#benefits">Benefits</a>
-        <a href="#order">Order</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="./#shop">Shop</a>
+        <a href="about.html">Our Story</a>
+        <a href="benefits.html">Benefits</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
-      <a href="#order" class="btn btn--small btn--accent header__cta">Order Now <span class="cart-count" id="cartCount" hidden>0</span></a>
+      <a href="./#order" class="btn btn--small btn--accent header__cta" id="headerCta">Order Now <span class="cart-count" id="cartCount" hidden>0</span></a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
@@ -102,7 +100,7 @@
           </p>
           <div class="hero__actions">
             <a href="#shop" class="btn btn--primary">Shop the Oil</a>
-            <a href="#story" class="btn btn--ghost">Our Story</a>
+            <a href="about.html" class="btn btn--ghost">Our Story</a>
           </div>
         </div>
         <div class="hero__media">
@@ -145,7 +143,6 @@
               <p class="product__price">₹110</p>
               <div class="product__actions">
                 <button type="button" class="btn btn--primary btn--block" data-add="60">Add to order</button>
-                <a class="product__quick" href="https://wa.me/918281447237?text=Hi%2C%20I%27d%20like%20to%20order%20Kairali%20Coconut%20Milk%20Oil%20-%2060%20ml" target="_blank" rel="noopener">or ask us on WhatsApp</a>
               </div>
             </div>
           </article>
@@ -159,7 +156,6 @@
               <p class="product__price">₹200</p>
               <div class="product__actions">
                 <button type="button" class="btn btn--primary btn--block" data-add="100">Add to order</button>
-                <a class="product__quick" href="https://wa.me/918281447237?text=Hi%2C%20I%27d%20like%20to%20order%20Kairali%20Coconut%20Milk%20Oil%20-%20100%20ml" target="_blank" rel="noopener">or ask us on WhatsApp</a>
               </div>
             </div>
           </article>
@@ -174,7 +170,6 @@
               <p class="product__price">₹436</p>
               <div class="product__actions">
                 <button type="button" class="btn btn--primary btn--block" data-add="250">Add to order</button>
-                <a class="product__quick" href="https://wa.me/918281447237?text=Hi%2C%20I%27d%20like%20to%20order%20Kairali%20Coconut%20Milk%20Oil%20-%20250%20ml" target="_blank" rel="noopener">or ask us on WhatsApp</a>
               </div>
             </div>
           </article>
@@ -188,208 +183,34 @@
               <p class="product__price">₹866</p>
               <div class="product__actions">
                 <button type="button" class="btn btn--primary btn--block" data-add="500">Add to order</button>
-                <a class="product__quick" href="https://wa.me/918281447237?text=Hi%2C%20I%27d%20like%20to%20order%20Kairali%20Coconut%20Milk%20Oil%20-%20500%20ml" target="_blank" rel="noopener">or ask us on WhatsApp</a>
               </div>
             </div>
           </article>
         </div>
 
-        <div class="shop__more">
-          <a href="https://www.mystore.in/en/product/kairali-coconut-milk-oil-1" class="btn btn--ghost" target="_blank" rel="noopener">Also available on MyStore →</a>
-          <a href="#order" class="btn btn--ghost">Calculate delivery &amp; order →</a>
-        </div>
+        <p class="shop__alt">
+          Prefer to chat? <a href="https://wa.me/918281447237?text=Hi%2C%20I%27d%20like%20to%20order%20Kairali%20Coconut%20Milk%20Oil" target="_blank" rel="noopener">Order on WhatsApp</a>
+          · Also on <a href="https://www.mystore.in/en/product/kairali-coconut-milk-oil-1" target="_blank" rel="noopener">MyStore</a>
+        </p>
       </div>
     </section>
 
-    <!-- ============ OUR STORY (women-owned) ============ -->
-    <section class="section section--cream" id="story">
-      <div class="container split">
-        <div class="split__media">
-          <figure class="owner-frame">
-            <div class="ph ph--portrait ph--arch is-loaded">
-              <img src="assets/img/founders.jpg" alt="Subi Prince, founder of Kairali, holding a bottle of Kairali Coconut Milk Oil at the VKP Industries unit" loading="lazy" width="1000" height="1200">
-            </div>
-            <figcaption class="owner-frame__badge"><strong>Subi Prince</strong><span>Founder &amp; Owner</span></figcaption>
-          </figure>
-        </div>
-        <div class="split__text">
-          <p class="eyebrow">The Story Begins…</p>
-          <h2>Run by women, built on tradition</h2>
-          <p>
-            Kairali began in <strong>1990</strong> in Tripunithura, Kerala, under <strong>VKP Industries</strong>.
-            The aim was simple: make the coconut oil our grandmothers trusted. That means oil drawn from
-            fresh coconut milk and slowly cooked into pure <em>ventha velichenna</em> (വെന്ത വെളിച്ചെണ്ണ), with nothing added.
-          </p>
-          <p>
-            Today Kairali is <strong>wholly women-owned and women-operated</strong>, led by founder
-            <strong>Subi Prince</strong>. Women choose the coconuts, make the oil, bottle it and send it to you.
-          </p>
-          <div class="stats">
-            <div><strong>1990</strong><span>Founded</span></div>
-            <div><strong>100%</strong><span>Women-run</span></div>
-            <div><strong>0</strong><span>Additives</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROCESS (inspired by Thenga's 4-step strip) ============ -->
-    <section class="section" id="process">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow">How It's Made</p>
-          <h2>From coconut to bottle, the traditional way</h2>
-          <p>Fresh coconut milk, slow care and patience. No shortcuts and no chemicals.</p>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <div class="ph ph--round is-loaded"><img src="assets/img/step-1.jpg" alt="Fresh Kerala coconuts" loading="lazy"></div>
-            <span class="step__num">01</span>
-            <h3>Fresh Coconuts</h3>
-            <p>Mature, high-grade coconuts from Kerala.</p>
-          </div>
-          <div class="step">
-            <div class="ph ph--round is-loaded"><img src="assets/img/step-2.jpg" alt="Grated coconut / extracting coconut milk" loading="lazy"></div>
-            <span class="step__num">02</span>
-            <h3>Coconut Milk</h3>
-            <p>The coconut is grated and pressed to draw out rich coconut milk.</p>
-          </div>
-          <div class="step">
-            <div class="ph ph--round is-loaded"><img src="assets/img/step-3.jpg" alt="Coconut milk cream being slowly cooked in a traditional vessel" loading="lazy"></div>
-            <span class="step__num">03</span>
-            <h3>Slowly Cooked</h3>
-            <p>The coconut milk cream is cooked gently by traditional methods until the pure oil separates.</p>
-          </div>
-          <div class="step">
-            <div class="ph ph--round is-loaded"><img src="assets/img/step-4.jpg" alt="Golden oil being filtered / bottled by hand" loading="lazy"></div>
-            <span class="step__num">04</span>
-            <h3>Pure Oil, Bottled</h3>
-            <p>The oil is filtered and bottled by hand, with no additives or preservatives.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ BENEFITS ============ -->
-    <section class="section section--teal" id="benefits">
-      <div class="container">
-        <div class="section__head section__head--light">
-          <p class="eyebrow">Key Benefits</p>
-          <h2>Long trusted in Kerala homes</h2>
-          <p>Kerala families have used coconut milk oil for generations to care for their hair and skin.</p>
-        </div>
-        <div class="benefits">
-          <div class="benefit">
-            <span class="benefit__icon">💇‍♀️</span>
-            <h3>Hair Care</h3>
-            <ul>
-              <li><strong>Thick, lustrous hair:</strong> nourishes the scalp and supports healthy growth.</li>
-              <li><strong>Less hair fall &amp; dandruff:</strong> soothes the scalp.</li>
-            </ul>
-          </div>
-          <div class="benefit">
-            <span class="benefit__icon">✨</span>
-            <h3>Skin Care</h3>
-            <ul>
-              <li><strong>Soft, supple skin:</strong> deep hydration that keeps skin smooth.</li>
-              <li><strong>Calms minor irritations:</strong> traditionally used for prickly heat and dry patches.</li>
-            </ul>
-          </div>
-          <div class="benefit">
-            <span class="benefit__icon">👶</span>
-            <h3>Baby Massage</h3>
-            <ul>
-              <li><strong>Pure and gentle:</strong> made with nothing added, as Kerala families have long done for newborns.</li>
-              <li><strong>Full-body massage:</strong> a cherished daily ritual for little ones.</li>
-            </ul>
-          </div>
-          <div class="benefit">
-            <span class="benefit__icon">🌿</span>
-            <h3>Wellness</h3>
-            <ul>
-              <li><strong>Enriches vitality:</strong> regular oil massage supports circulation and well-being.</li>
-              <li><strong>For all ages:</strong> one oil for the whole family.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ HERITAGE (Malayalam) ============ -->
-    <section class="section section--cream heritage">
-      <div class="container split split--reverse">
-        <div class="split__text">
-          <p class="eyebrow">Rooted in Ayurveda</p>
-          <h2 lang="ml" class="ml">തേങ്ങാപ്പാലിൽ നിന്നും<br>നിർമ്മിക്കപ്പെട്ടത്</h2>
-          <p class="heritage__sub">Made from coconut milk</p>
-          <blockquote class="verse" lang="ml">
-            നാളികേരഫലോത്ഭുതം തൈലം വാജീകരം ഗുരു<br>
-            പോഷണം ക്ഷീണധാതൂനാം വാതപിത്തപ്രണാശനം<br>
-            മൂത്രാഘാതേ പ്രമേഹേ ച ശ്വാസേ കാസേ ച യക്ഷ്‌മണി<br>
-            മേധാലോപേ ച ഹിതം ക്ഷതാനാം ഭരണം തഥാ
-            <cite>— രാജ നിഘണ്ടു (Raja Nighantu)</cite>
-          </blockquote>
-          <ul class="ml-list" lang="ml">
-            <li>പിഞ്ചോമനകൾക്ക് സർവ്വാംഗ ഉപയോഗത്തിന് ഉത്കൃഷ്ടമായത്.</li>
-            <li>മുടിവളർച്ചയ്ക്കും ചർമ്മകാന്തിക്കും ഉത്തമം.</li>
-            <li>മുടികൊഴിച്ചിൽ, താരൻ, കരപ്പൻ, ചൂടുകുരു, ചർമ്മത്തിലെ പാടുകൾ എന്നിവയ്ക്ക് ഉത്തമം.</li>
-            <li>നാളികേരത്തിലെ ഔഷധമൂല്യങ്ങൾ അടങ്ങിയിരിക്കുന്നതിനാൽ ഉണർവിനും ഉന്മേഷത്തിനും സഹായകം.</li>
-          </ul>
-        </div>
-        <div class="split__media">
-          <div class="ph ph--portrait is-loaded"><img src="assets/img/heritage.jpg" alt="Kerala heritage image, e.g. Kathakali motif from the label, a traditional uruli, or a grandmother oiling a child&#x27;s hair" loading="lazy"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ HOW TO USE ============ -->
-    <section class="section" id="use">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow">Daily Rituals</p>
-          <h2>How to use Kairali</h2>
-        </div>
-        <div class="rituals">
-          <div class="ritual">
-            <div class="ph ph--wide is-loaded"><img src="assets/img/use-hair.jpg" alt="Woman massaging oil into hair / scalp" loading="lazy"></div>
-            <h3>Head Massage</h3>
-            <p>Warm a few drops between your palms and massage into the scalp. Leave it on for 30 minutes or overnight, then wash.</p>
-          </div>
-          <div class="ritual">
-            <div class="ph ph--wide is-loaded"><img src="assets/img/use-baby.jpg" alt="Mother giving baby an oil massage" loading="lazy"></div>
-            <h3>Baby Massage</h3>
-            <p>Gently massage your baby's whole body before the bath, as Kerala mothers have done for generations.</p>
-          </div>
-          <div class="ritual">
-            <div class="ph ph--wide is-loaded"><img src="assets/img/use-skin.jpg" alt="Applying oil to skin / hands" loading="lazy"></div>
-            <h3>Skin Care</h3>
-            <p>Smooth onto damp skin after a bath to lock in moisture, or use on dry patches through the day.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ BUILD YOUR ORDER (integrated order & delivery calculator) ============ -->
+    <!-- ============ CHECKOUT ============ -->
     <section class="section ob-section" id="order">
       <div class="container">
         <div class="section__head">
-          <p class="eyebrow">Build Your Order</p>
-          <h2>Order direct from us</h2>
-          <p>Choose your bottles and enter your pincode to see the Speed Post charge. Then pay by UPI and confirm on WhatsApp. It takes about two minutes.</p>
+          <p class="eyebrow">Checkout</p>
+          <h2>Your order</h2>
+          <p>Enter your pincode to see the Speed Post charge, pay by UPI, then confirm on WhatsApp. It takes about two minutes.</p>
         </div>
 
         <div class="ob">
           <div class="ob__steps">
 
-            <!-- Step 1: bottles -->
-            <div class="ob-card" id="ob-step-1">
-              <div class="ob-card__head"><span class="ob-num">1</span><h3>Choose your bottles</h3></div>
-              <div class="ob-items" id="obItems"><!-- filled by order.js --></div>
-            </div>
 
-            <!-- Step 2: pincode -->
+            <!-- Step 1: pincode -->
             <div class="ob-card" id="ob-step-2">
-              <div class="ob-card__head"><span class="ob-num">2</span><h3>Check delivery to your pincode</h3></div>
+              <div class="ob-card__head"><span class="ob-num">1</span><h3>Check delivery to your pincode</h3></div>
               <div class="ob-pin">
                 <label for="obPin" class="sr-only">Delivery pincode</label>
                 <input type="text" id="obPin" maxlength="6" placeholder="6-digit pincode, e.g. 110001" inputmode="numeric" pattern="[0-9]{6}" autocomplete="postal-code">
@@ -404,9 +225,9 @@
               </div>
             </div>
 
-            <!-- Step 3: pay -->
+            <!-- Step 2: pay -->
             <div class="ob-card" id="ob-step-3">
-              <div class="ob-card__head"><span class="ob-num">3</span><h3>Pay by UPI</h3></div>
+              <div class="ob-card__head"><span class="ob-num">2</span><h3>Pay by UPI</h3></div>
               <div class="ob-pay">
                 <img src="assets/img/upi-qr.png" alt="UPI QR code for VKP Industries" class="ob-pay__qr" width="335" height="293" loading="lazy">
                 <div class="ob-pay__info">
@@ -422,9 +243,9 @@
               </div>
             </div>
 
-            <!-- Step 4: confirm -->
+            <!-- Step 3: confirm -->
             <div class="ob-card" id="ob-step-4">
-              <div class="ob-card__head"><span class="ob-num">4</span><h3>Confirm on WhatsApp</h3></div>
+              <div class="ob-card__head"><span class="ob-num">3</span><h3>Confirm on WhatsApp</h3></div>
               <p class="ob-intro">Add your delivery details. We'll send your full order to WhatsApp. Then attach your payment screenshot and tap send.</p>
               <div class="ob-fields">
                 <div class="ob-field">
@@ -451,8 +272,8 @@
 
           <!-- Sticky live summary -->
           <aside class="ob-summary" aria-live="polite">
-            <h3>Your order</h3>
-            <ul class="ob-summary__lines" id="obLines"><li class="ob-empty">No bottles added yet.</li></ul>
+            <h3>Order summary</h3>
+            <ul class="ob-summary__lines" id="obLines"><li class="ob-empty">No bottles added yet. <a href="#shop">Choose above ↑</a></li></ul>
             <div class="ob-summary__row"><span>Order value</span><span id="obSubtotal">₹0</span></div>
             <div class="ob-summary__row"><span>Speed Post delivery <small>(incl. GST)</small></span><span id="obShip">Enter pincode</span></div>
             <div class="ob-summary__row ob-summary__total"><span>Total payable</span><span id="obTotal">—</span></div>
@@ -464,55 +285,18 @@
       </div>
     </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="section section--cream" id="faq">
-      <div class="container container--narrow">
-        <div class="section__head">
-          <p class="eyebrow">FAQ</p>
-          <h2>Questions, answered</h2>
-        </div>
-        <div class="faq">
-          <details>
-            <summary>What makes coconut milk oil different from regular coconut oil?</summary>
-            <p>Regular coconut oil is usually pressed from dried copra. Kairali is made from <strong>fresh coconut milk</strong>, cooked by traditional methods. This gives it a pleasant natural aroma and keeps the goodness of fresh coconut.</p>
-          </details>
-          <details>
-            <summary>Is it safe for babies?</summary>
-            <p>Yes. Kairali has no additives or preservatives, and Kerala families have used this kind of oil for newborn massage for generations. As with any new product, do a small patch test first.</p>
-          </details>
-          <details>
-            <summary>I see a little sediment in the bottle. Is that okay?</summary>
-            <p>Yes. Kairali is pure oil with nothing added, so a little natural sediment can settle at the bottom. It does not mean the quality has gone down.</p>
-          </details>
-          <details>
-            <summary>Why has my oil turned solid / white?</summary>
-            <p>Pure coconut oil naturally turns solid below about 24°C. Keep the bottle in warm water for a few minutes and it will turn liquid again. This is a sign of purity.</p>
-          </details>
-          <details>
-            <summary>Do you deliver outside Kerala?</summary>
-            <p>Yes, we offer delivery across India by India Post Speed Post. Enter your pincode in <a href="#order">Build Your Order</a> to see the exact delivery charge.</p>
-          </details>
-          <details>
-            <summary>Do you take bulk or wholesale orders?</summary>
-            <p><span class="todo">[Confirm your bulk/wholesale policy]</span> Message us on <a href="https://wa.me/918281447237" target="_blank" rel="noopener">WhatsApp</a> for bulk, retail or gifting enquiries.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ INSTAGRAM STRIP ============ -->
-    <section class="section insta">
+    <!-- ============ EXPLORE (links to the other pages) ============ -->
+    <section class="section section--cream explore-section">
       <div class="container">
         <div class="section__head">
-          <p class="eyebrow">@kairali_oil</p>
-          <h2>Follow us on Instagram</h2>
+          <p class="eyebrow">Get to know Kairali</p>
+          <h2>More about our oil</h2>
         </div>
-        <div class="insta__grid">
-          <a href="https://www.instagram.com/kairali_oil/" target="_blank" rel="noopener"><div class="ph ph--square" data-src="assets/img/insta-1.jpg" data-label="Instagram post 1" data-size="600 × 600"></div></a>
-          <a href="https://www.instagram.com/kairali_oil/" target="_blank" rel="noopener"><div class="ph ph--square" data-src="assets/img/insta-2.jpg" data-label="Instagram post 2" data-size="600 × 600"></div></a>
-          <a href="https://www.instagram.com/kairali_oil/" target="_blank" rel="noopener"><div class="ph ph--square" data-src="assets/img/insta-3.jpg" data-label="Instagram post 3" data-size="600 × 600"></div></a>
-          <a href="https://www.instagram.com/kairali_oil/" target="_blank" rel="noopener"><div class="ph ph--square" data-src="assets/img/insta-4.jpg" data-label="Instagram post 4" data-size="600 × 600"></div></a>
-          <a href="https://www.instagram.com/kairali_oil/" target="_blank" rel="noopener"><div class="ph ph--square" data-src="assets/img/insta-5.jpg" data-label="Instagram post 5" data-size="600 × 600"></div></a>
+        <div class="explore">
+          <a class="explore__card" href="about.html"><span class="explore__icon">👩‍👩‍👧</span><strong>Our Story</strong><span>Women-run since 1990, and how the oil is made.</span></a>
+          <a class="explore__card" href="benefits.html"><span class="explore__icon">✨</span><strong>Benefits &amp; Use</strong><span>Hair, skin, baby massage and daily rituals.</span></a>
+          <a class="explore__card" href="faq.html"><span class="explore__icon">💬</span><strong>FAQ</strong><span>Sediment, solid oil, delivery and more.</span></a>
+          <a class="explore__card" href="contact.html"><span class="explore__icon">📍</span><strong>Visit Us</strong><span>Find us on Main Road, Thripunithura.</span></a>
         </div>
       </div>
     </section>
@@ -520,7 +304,7 @@
   </main>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="footer" id="contact">
+  <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
         <span class="logo__mark logo__mark--light">Kairali</span>
@@ -539,29 +323,29 @@
       </div>
       <div>
         <h4>Shop</h4>
-        <a href="#shop">60 ml · Small</a>
-        <a href="#shop">100 ml · Standard</a>
-        <a href="#shop">250 ml · Family</a>
-        <a href="#shop">500 ml · Value</a>
+        <a href="./#shop">60 ml · Small</a>
+        <a href="./#shop">100 ml · Standard</a>
+        <a href="./#shop">250 ml · Family</a>
+        <a href="./#shop">500 ml · Value</a>
         <a href="https://www.mystore.in/en/product/kairali-coconut-milk-oil-1" target="_blank" rel="noopener">MyStore</a>
       </div>
       <div>
         <h4>About</h4>
-        <a href="#story">Our Story</a>
-        <a href="#process">How It's Made</a>
-        <a href="#benefits">Benefits</a>
-        <a href="#order">Order Direct</a>
-        <a href="#faq">FAQ</a>
+        <a href="about.html">Our Story</a>
+        <a href="about.html#process">How It's Made</a>
+        <a href="benefits.html">Benefits &amp; Use</a>
+        <a href="./#order">Order Direct</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Visit Us</a>
       </div>
       <div>
         <h4>Contact</h4>
         <p>
           VKP Industries<br>
-          Tripunithura, Kerala 682301<br>
-          <span class="todo">[Full street address]</span>
+          Opposite St Marys Royal Metropolitan Church<br>
+          Main Road, Thripunithura, Kerala 682301
         </p>
         <a href="https://wa.me/918281447237" target="_blank" rel="noopener">+91 82814 47237</a>
-        <a href="mailto:hello@example.com"><span class="todo">[email@yourdomain]</span></a>
       </div>
     </div>
     <div class="container footer__bottom">
@@ -570,7 +354,7 @@
     </div>
   </footer>
 
-  <a href="#order" class="cartbar" id="cartBar" aria-live="polite">
+  <a href="./#order" class="cartbar" id="cartBar" aria-live="polite">
     <span class="cartbar__info">🛒 <strong id="cartBarCount">0 bottles</strong> · <span id="cartBarTotal">₹0</span></span>
     <span class="cartbar__cta">View order →</span>
   </a>
